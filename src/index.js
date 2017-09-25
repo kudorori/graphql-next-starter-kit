@@ -1,9 +1,13 @@
 import { models, schema } from "./modules";
 import client from "../client";
-import { dev } from "./config";
+import { dev } from "../config";
+import logger from "./middles/logger";
 
 client({
   models,
   schema,
-  dev
+  dev,
+  middlewares: [
+    logger
+  ]
 })

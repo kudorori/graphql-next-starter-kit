@@ -15,4 +15,6 @@ export const type = createType({
   })
 })
 
+schema.index({username: 1}, {unique: true})
+
 export default schema;

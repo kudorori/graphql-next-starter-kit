@@ -7,20 +7,24 @@ import koaStatic from "koa-static";
 import koaSession from "koa-session";
 import koaPassport from "koa-passport";
 import koaRouter from "koa-router";
+import { graphqlKoa, graphiqlKoa } from 'graphql-server-koa';
 import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import next from "next";
+import { root } from "../../config";
 
-export default ({ schema, models, dev }) => {
+export default ({ schema, models, dev, middlewares }) => {
   const app = next({ dir: __dirname, dev });
   const server = new koa();
   const router = new koaRouter();
   const handle = app.getRequestHandler();
+
+  middlewares.forEach((middleware) => {
+    server.use(middleware);
+  })
+
   app.prepare().then(() => {
-    router.get("*", async(ctx, next) => {
-      await handle(ctx.req, ctx.res);
-      ctx.respond = false;
-    })
+
     router.post("/graphql", async (ctx, next) => graphqlKoa({
       schema,
       rootValue: {},
@@ -31,6 +35,11 @@ export default ({ schema, models, dev }) => {
       endpointURL: "/graphql",
       subscriptionsEndpoint: `ws://${ctx.headers.host}/subscriptions`
     })(ctx, next));
+
+    router.get("*", async(ctx, next) => {
+      await handle(ctx.req, ctx.res);
+      ctx.respond = false;
+    })
 
     server.use(koaBody({
         multipart: true,
@@ -62,7 +71,7 @@ export default ({ schema, models, dev }) => {
           return new Promise((resolve) => {
             // verify user, resolve models & user state
             resolve({
-              a: 123
+              models
             })
           });
         },

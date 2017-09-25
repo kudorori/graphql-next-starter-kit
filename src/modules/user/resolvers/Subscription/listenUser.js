@@ -3,5 +3,10 @@ import { PubSub } from 'graphql-subscriptions';
 const pubsub = new PubSub();
 
 export default  {
-  subscribe: () => pubsub.asyncIterator("listenUser")
+  resolve: () => {
+    return "123123";
+  },
+  subscribe: () => {
+    return pubsub.asyncIterator("listenUser")
+  }
 }

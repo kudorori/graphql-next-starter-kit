@@ -1,11 +1,16 @@
 import R from "ramda";
 import path from "path";
 import impl from "import-directory";
-import { parse } from "graphql";
 import { makeExecutableSchema } from 'graphql-tools';
 import { mergeType } from "mongoose2gql";
 import mongoose from "mongoose";
+import { mongo_host } from "../../config";
 
+mongoose.connect(mongo_host, {
+  useMongoClient: true
+}, () => {
+  console.log("mongoose connection to", mongo_host);
+})
 
 const modules = impl(module, __dirname, {
 
@@ -19,6 +24,7 @@ const models = R.pipe(
     R.not
   ))
 )(modules);
+
 const typeDefs = R.pipe(
   R.toPairs,
   R.map(R.pathOr("", [1, "typeDefs"])),
@@ -27,7 +33,6 @@ const typeDefs = R.pipe(
     R.not
   )),
   mergeType,
-  // R.tap(console.log)
 )(modules);
 
 const resolvers = R.pipe(

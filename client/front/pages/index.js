@@ -43,6 +43,7 @@ class Index extends Component{
     return (
       <div className={className}>
         Index
+        
       </div>
     )
   }

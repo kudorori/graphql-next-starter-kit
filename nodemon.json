@@ -2,6 +2,7 @@
   "ignore": [
     ".next",
     "components",
-    "pages"
+    "pages",
+    "logger"
   ]
 }
