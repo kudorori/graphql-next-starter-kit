@@ -17,14 +17,14 @@
 
 ## Server
 
-> 以業務層為主進行模式化
+> 以業務層為主進行模組化
 
 
 ### 目錄結構
 
 ```
 ./
-├── client/
+├── client/                       # Client -----
 │   ├── front/                    #
 │   │   ├── pages/                # Next.js Pages
 │   │   ├── gql/                  # Query GQL Dir
@@ -35,13 +35,13 @@
 │   │   └── 同上/                  
 │   ├── libs/                     # Client 端共用 Library (ln to other dir)
 │   └── index.js
-├── src/                          #
-│   ├── modules/                  #
-│   │   ├── [methodName]/         #
-│   │   │   ├── resolvers/        #
-│   │   │   ├── schema/           #
-│   │   │   └── typeDefs.js       #
-│   │   └── index.js              #
+├── src/                          # Server -----
+│   ├── modules/                  # 業務層模組
+│   │   ├── [methodName]/         # Method Name
+│   │   │   ├── resolvers/        # GraphQL Resolvers...
+│   │   │   ├── schema/           # Mongoose Schemas
+│   │   │   └── typeDefs.js       # GraphQL Type Definitions
+│   │   └── index.js              # Merge All TypeDefs & Resolvers
 │   ├── middles/                  # 共用中間層
 │   ├── libs/                     # Server端Libs
 │   └── index.js                  #
