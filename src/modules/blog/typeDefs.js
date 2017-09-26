@@ -12,7 +12,7 @@ export default /* GraphQL */`
       q: String
     ): [String]
   }
-  extend type MQuery {
+  extend type MeQuery {
     blog: BlogMe
   }
   extend type Query {
