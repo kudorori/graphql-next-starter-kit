@@ -2,7 +2,6 @@ import R from "ramda";
 import path from "path";
 import impl from "import-directory";
 import { makeExecutableSchema } from 'graphql-tools';
-import { mergeType } from "mongoose2gql";
 import mongoose from "mongoose";
 import { mongo_host } from "../../config";
 
@@ -32,7 +31,7 @@ const typeDefs = R.pipe(
     R.isEmpty,
     R.not
   )),
-  mergeType,
+  R.join("\n")
 )(modules);
 
 const resolvers = R.pipe(

@@ -1,24 +1,24 @@
 
 
-export default `
+export default /* GraphQL */`
 
   type BlogMe {
     title: String
   }
-  type Admin {
+  extend type AdminQuery {
     searchBlog(
       limit: Int,
       skip: Int,
       q: String
     ): [String]
   }
-  type Me {
+  extend type MQuery {
     blog: BlogMe
   }
-  type Query {
+  extend type Query {
     me: Me
   }
-  type Mutation {
+  extend type Mutation {
     me: Me
   }
 `

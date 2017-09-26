@@ -8,27 +8,27 @@ export default /* GraphQL */`
       username: String
     ) : UserList
   }
-  type MeQuery {
+  extend type MeQuery {
     a: String
   }
-  type MeMutate {
+  extend type MeMutate {
     user: UserMutate
   }
-  type AdminQuery {
+  extend type AdminQuery {
     a: String
   }
-  type AdminMutate {
+  extend type AdminMutate {
     a: String
   }
 
-  type Query {
+  extend type Query {
     searchUser(
       skip: Int,
       limit: Int,
       q: String
     ): [UserList]
   }
-  type Subscription {
+  extend type Subscription {
     listenUser: String
   }
 `

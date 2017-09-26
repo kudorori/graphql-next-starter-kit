@@ -3,6 +3,8 @@ import createType from "mongoose2gql";
 const schema = new Schema({
   username: String,
   password: String
+}, {
+  timestamps: true
 })
 
 export const type = createType({
