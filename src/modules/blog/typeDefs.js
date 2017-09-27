@@ -15,10 +15,4 @@ export default /* GraphQL */`
   extend type MeQuery {
     blog: BlogMe
   }
-  extend type Query {
-    me: Me
-  }
-  extend type Mutation {
-    me: Me
-  }
 `
