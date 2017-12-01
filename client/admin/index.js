@@ -11,9 +11,14 @@ import { execute, subscribe } from 'graphql';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { graphqlKoa, graphiqlKoa } from 'graphql-server-koa';
 import next from "next";
-import { root } from "../../config";
 
-export default ({ schema, models, dev, middlewares }) => {
+export default ({
+  schema,
+  models,
+  middlewares,
+  config
+}) => {
+  const { dev, root } = config;
   const app = next({ dir: __dirname, dev });
   const server = new koa();
   const router = new koaRouter();

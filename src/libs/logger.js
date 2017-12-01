@@ -1,5 +1,5 @@
 import winston from "winston";
-import { root } from "../../config";
+import { root } from "../config";
 import moment from "moment";
 export default new (winston.Logger)({
   transports: [

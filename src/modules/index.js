@@ -3,7 +3,7 @@ import path from "path";
 import impl from "import-directory";
 import { makeExecutableSchema } from 'graphql-tools';
 import mongoose from "mongoose";
-import { mongo_host } from "../../config";
+import { mongo_host } from "../config";
 
 mongoose.connect(mongo_host, {
   useMongoClient: true
