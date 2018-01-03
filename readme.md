@@ -10,44 +10,43 @@
   $ npm run dev
 ```
 
-## Client
+## Ues Koa-Server Running
+```
+  $ npm run dev
+  $ npm run build
+  $ npm run start
+```
 
-> 保留Next.js本身的開發模式
+## No Server Running
 
+```
+  $ npm run dev-client
+  $ npm run build-client
+  $ npm run start-client
+```
 
-## Server
+## Unit test
 
-> 以業務層為主進行模組化
-
+```
+  $ npm run test
+```
 
 ### 目錄結構
 
 ```
 ./
 ├── client/                       # Client -----
-│   ├── front/                    #
-│   │   ├── pages/                # Next.js Pages
-│   │   ├── gql/                  # Query GQL Dir
-│   │   ├── components/           # Component & Container Dir
-│   │   ├── libs/                 # Client Use Library
-│   │   └── index.js              # Listen Server
-│   ├── admin/                    #
-│   │   └── 同上/                  
-│   ├── libs/                     # Client 端共用 Library (ln to other dir)
-│   └── index.js
+│   ├── pages/                    # Next.js Pages
+│   ├── components/               # Component & Container Dir
+│   ├── libs/                     # Client Use Library
+│   └── index.js                  # Listen Server
 ├── src/                          # Server -----
-│   ├── modules/                  # 業務層模組
-│   │   ├── [methodName]/         # Method Name
-│   │   │   ├── resolvers/        # GraphQL Resolvers...
-│   │   │   ├── schema/           # Mongoose Schemas
-│   │   │   └── typeDefs.js       # GraphQL Type Definitions
-│   │   └── index.js              # Merge All TypeDefs & Resolvers
-│   ├── middles/                  # 共用中間層
-│   ├── libs/                     # Server端Libs
+│   ├── resolvers/                # GraphQL Resolvers...
+│   ├── typeDefs/                 # GraphQL typeDefs...
+│   ├── models/                   # Data Model (Mongoose, Sequelizejs)
+│   ├── middles/                  # Middlewares
+│   ├── libs/                     # Server Util Libs
+│   ├── client.js/                # Client Server build
+│   ├── config.js/                # Server Config
 │   └── index.js                  #
 ```
-
-
-## TODO
-1. Example Code
-2. Document
