@@ -18,8 +18,12 @@ export default ({
   middlewares,
   config
 }) => {
-  const { dev, root } = config;
-  const app = next({ dir: __dirname, dev });
+  const {
+    dev,
+    root,
+    port
+  } = config;
+  const app = next({ dir: "../client", dev });
   const server = new koa();
   const router = new koaRouter();
   const handle = app.getRequestHandler();
