@@ -23,7 +23,7 @@ export default ({
     root,
     port
   } = config;
-  const app = next({ dir: "../client", dev });
+  const app = next({ dir: `${root}/client`, dev });
   const server = new koa();
   const router = new koaRouter();
   const handle = app.getRequestHandler();
